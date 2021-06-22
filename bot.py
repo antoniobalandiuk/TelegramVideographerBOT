@@ -64,6 +64,8 @@ async def reviews(call: types.CallbackQuery):
     await call.message.edit_text('Перейдіть по силці і залишіть коментар', reply_markup=keyboard)
 
 
+"""Меню для перегляду прикладів відео"""
+
 keyboard_for_example = InlineKeyboardMarkup()
 klip = InlineKeyboardButton(text='Кліп 🎬', callback_data="klip")
 fashion = InlineKeyboardButton(text='Fashion 👗', callback_data="fashion")
