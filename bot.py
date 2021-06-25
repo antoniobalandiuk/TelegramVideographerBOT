@@ -1,22 +1,11 @@
 import asyncio
 
-from aiogram import Bot, types
-from aiogram.dispatcher import Dispatcher
+from aiogram import types
 from aiogram.utils import executor
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from aiogram.utils.exceptions import MessageNotModified
-from config import TOKEN
+from aiogram.utils.exceptions import MessageNotModified, NetworkError
 
-bot = Bot(token=TOKEN)
-dp = Dispatcher(bot)
-
-keyboard = InlineKeyboardMarkup()
-services = InlineKeyboardButton(text='Види послуг 📋', callback_data="services")
-price = InlineKeyboardButton(text='Прайс-лист 💵', callback_data="price")
-contacts = InlineKeyboardButton(text='Контактні дані 👥', callback_data="contacts")
-special_offers = InlineKeyboardButton(text='Особливі пропозиції 🤝', callback_data="special_offers")
-reviews = InlineKeyboardButton(text='Відгуки 🗣', callback_data="reviews")
-keyboard.add(services, price, contacts, special_offers, reviews)
+from loader import dp
+from keyboards.keyboard import keyboard, keyboard_for_example
 
 
 @dp.message_handler(commands=['start'])
@@ -52,29 +41,14 @@ async def contacts(call: types.CallbackQuery):
 
 @dp.callback_query_handler(text_contains='special_offers')
 async def special_offers(call: types.CallbackQuery):
-    await call.message.edit_text(f'Я є прибічником збалансованого обміну\n'
-                                 f'послугами або ж товарами, тому якщо\n'
-                                 f'у вас є вигідна бартерна пропозиція,\n'
-                                 f'то дзвоніть по номеру телефону, що\n'
-                                 f'вказаний у меню "Контактні дані 👥"\n', reply_markup=keyboard)
+    await call.message.edit_text(f'Будь ласка, перейдіть по посиланню - \n'
+                                 f'та залишіть заяву для бартерного обміну послугами\n'
+                                 f'\n', reply_markup=keyboard)
 
 
 @dp.callback_query_handler(text_contains='reviews')
 async def reviews(call: types.CallbackQuery):
     await call.message.edit_text('Перейдіть по силці і залишіть коментар', reply_markup=keyboard)
-
-
-"""Меню для перегляду прикладів відео"""
-
-keyboard_for_example = InlineKeyboardMarkup()
-klip = InlineKeyboardButton(text='Кліп 🎬', callback_data="klip")
-fashion = InlineKeyboardButton(text='Fashion 👗', callback_data="fashion")
-promotional_videos = InlineKeyboardButton(text='Рекламні відео 📢', callback_data="promotional_videos")
-wedding_videos = InlineKeyboardButton(text='Весільні відео 💍', callback_data="wedding_videos")
-love_story = InlineKeyboardButton(text='Love story 💏', callback_data="love_story")
-aerovideo = InlineKeyboardButton(text='Аерозйомка ✈', callback_data="aerovideo")
-video_editing = InlineKeyboardButton(text='Монтаж 👨‍💻', callback_data="video_edition")
-keyboard_for_example.add(klip, fashion, promotional_videos, wedding_videos, love_story, aerovideo, video_editing)
 
 
 @dp.message_handler(commands=['example'])
@@ -89,7 +63,7 @@ async def clip(call: types.CallbackQuery):
     await asyncio.sleep(1)
     await types.ChatActions.upload_video()
     media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/🔥OVERWATCH FUNNY MOMENTS #3 ОВЕРВОТЧ #SHORTS ► СМЕШНЫЕ МОМЕНТЫ ОВЕРВАЧ _ ШОРТС _ КОРОТКИЕ ВИДЕО ЮТУБ.mp4'))
+    media.attach_video(types.InputFile('example/video/advert_Trim.mp4.mp4'))
     await call.message.reply_media_group(media=media)
 
 
@@ -98,7 +72,7 @@ async def fashion(call: types.CallbackQuery):
     await asyncio.sleep(1)
     await types.ChatActions.upload_video()
     media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/🔥OVERWATCH FUNNY MOMENTS #3 ОВЕРВОТЧ #SHORTS ► СМЕШНЫЕ МОМЕНТЫ ОВЕРВАЧ _ ШОРТС _ КОРОТКИЕ ВИДЕО ЮТУБ.mp4'))
+    media.attach_video(types.InputFile('example/video/advert_Trim.mp4'))
     await call.message.reply_media_group(media=media)
 
 
@@ -107,7 +81,7 @@ async def promotional_videos(call: types.CallbackQuery):
     await asyncio.sleep(1)
     await types.ChatActions.upload_video()
     media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/🔥OVERWATCH FUNNY MOMENTS #3 ОВЕРВОТЧ #SHORTS ► СМЕШНЫЕ МОМЕНТЫ ОВЕРВАЧ _ ШОРТС _ КОРОТКИЕ ВИДЕО ЮТУБ.mp4'))
+    media.attach_video(types.InputFile('example/video/advert_Trim.mp4'))
     await call.message.reply_media_group(media=media)
 
 
@@ -116,7 +90,7 @@ async def promotional_videos(call: types.CallbackQuery):
     await asyncio.sleep(1)
     await types.ChatActions.upload_video()
     media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/🔥OVERWATCH FUNNY MOMENTS #3 ОВЕРВОТЧ #SHORTS ► СМЕШНЫЕ МОМЕНТЫ ОВЕРВАЧ _ ШОРТС _ КОРОТКИЕ ВИДЕО ЮТУБ.mp4'))
+    media.attach_video(types.InputFile('example/video/advert_Trim.mp4'))
     await call.message.reply_media_group(media=media)
 
 
@@ -125,7 +99,7 @@ async def promotional_videos(call: types.CallbackQuery):
     await asyncio.sleep(1)
     await types.ChatActions.upload_video()
     media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/🔥OVERWATCH FUNNY MOMENTS #3 ОВЕРВОТЧ #SHORTS ► СМЕШНЫЕ МОМЕНТЫ ОВЕРВАЧ _ ШОРТС _ КОРОТКИЕ ВИДЕО ЮТУБ.mp4'))
+    media.attach_video(types.InputFile('example/video/advert_Trim.mp4'))
     await call.message.reply_media_group(media=media)
 
 
@@ -134,7 +108,7 @@ async def promotional_videos(call: types.CallbackQuery):
     await asyncio.sleep(1)
     await types.ChatActions.upload_video()
     media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/🔥OVERWATCH FUNNY MOMENTS #3 ОВЕРВОТЧ #SHORTS ► СМЕШНЫЕ МОМЕНТЫ ОВЕРВАЧ _ ШОРТС _ КОРОТКИЕ ВИДЕО ЮТУБ.mp4'))
+    media.attach_video(types.InputFile('example/video/advert_Trim.mp4'))
     await call.message.reply_media_group(media=media)
 
 
@@ -143,7 +117,7 @@ async def promotional_videos(call: types.CallbackQuery):
     await asyncio.sleep(1)
     await types.ChatActions.upload_video()
     media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/🔥OVERWATCH FUNNY MOMENTS #3 ОВЕРВОТЧ #SHORTS ► СМЕШНЫЕ МОМЕНТЫ ОВЕРВАЧ _ ШОРТС _ КОРОТКИЕ ВИДЕО ЮТУБ.mp4'))
+    media.attach_video(types.InputFile('example/video/advert_Trim.mp4'))
     await call.message.reply_media_group(media=media)
 
 
@@ -152,28 +126,13 @@ async def promotional_videos(call: types.CallbackQuery):
     await asyncio.sleep(1)
     await types.ChatActions.upload_video()
     media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/🔥OVERWATCH FUNNY MOMENTS #3 ОВЕРВОТЧ #SHORTS ► СМЕШНЫЕ МОМЕНТЫ ОВЕРВАЧ _ ШОРТС _ КОРОТКИЕ ВИДЕО ЮТУБ.mp4'))
+    media.attach_video(types.InputFile('example/video/advert_Trim.mp4'))
     await call.message.reply_media_group(media=media)
 
 
 @dp.errors_handler(exception=MessageNotModified)
 async def message_not_modified_handler(update, error):
     return True
-
-"""Це надсилає відео в бота"""
-# @dp.message_handler(text_contains='example_video')
-# async def process_example_command(call: types.CallbackQuery):
-#     await call.message.edit_text('Виберіть тип відео, приклад якого ви хочите побачити', reply_markup=keyboard)
-#
-#     await asyncio.sleep(1)
-#
-#     await types.ChatActions.upload_video()
-#
-#     media = types.MediaGroup()
-#
-#     media.attach_video(types.InputFile('example/video/advert.mp4'))
-#
-#     await call.message.reply_media_group(media=media)
 
 
 if __name__ == '__main__':
