@@ -18,7 +18,7 @@ async def process_start_command(message: types.Message):
 
 @dp.callback_query_handler(text_contains='services')
 async def services(call: types.CallbackQuery):
-    await call.message.edit_text(f'Тут будуть послуги, моделі камер та дрону', reply_markup=keyboard)
+    await call.message.edit_text(f'Тут будуть види послуг', reply_markup=keyboard)
 
 
 @dp.callback_query_handler(text_contains='price')
