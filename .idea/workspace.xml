@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f34964f2-f8a9-4611-9d09-0b8214819465" name="Default Changelist" comment="...">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/video/advert.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/keyboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/keyboard.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +49,8 @@
       <recent name="C:\Users\anton\PycharmProjects\TelegramVideographerBOT\example\video" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\anton\PycharmProjects\TelegramVideographerBOT\example\videos" />
+      <recent name="C:\Users\anton\PycharmProjects\TelegramVideographerBOT\example\photo" />
       <recent name="C:\Users\anton\PycharmProjects\TelegramVideographerBOT\example\video" />
       <recent name="C:\Users\anton\PycharmProjects\TelegramVideographerBOT" />
     </key>
@@ -145,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624935765542</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="...">
+      <created>1625708213178</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1625708213178</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

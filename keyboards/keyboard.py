@@ -19,5 +19,4 @@ promotional_videos = InlineKeyboardButton(text='Рекламні відео 📢
 wedding_videos = InlineKeyboardButton(text='Весільні відео 💍', callback_data="wedding_videos")
 love_story = InlineKeyboardButton(text='Love story 💏', callback_data="love_story")
 aerovideo = InlineKeyboardButton(text='Аерозйомка ✈', callback_data="aerovideo")
-video_editing = InlineKeyboardButton(text='Монтаж 👨‍💻', callback_data="video_edition")
-keyboard_for_example.add(klip, fashion, promotional_videos, wedding_videos, love_story, aerovideo, video_editing)
+keyboard_for_example.add(klip, fashion, promotional_videos, wedding_videos, love_story, aerovideo)

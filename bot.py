@@ -2,7 +2,7 @@ import asyncio
 
 from aiogram import types
 from aiogram.utils import executor
-from aiogram.utils.exceptions import MessageNotModified, NetworkError
+from aiogram.utils.exceptions import MessageNotModified
 
 from loader import dp
 from keyboards.keyboard import keyboard, keyboard_for_example
@@ -54,9 +54,8 @@ async def reviews(call: types.CallbackQuery):
 
 @dp.message_handler(commands=['example'])
 async def message_before_example(message: types.Message):
-    await message.reply('Ви увыйшли в меню "/example"\n'
-                        'Натискаючи на кнопки під цим текстом ви вибираєте\n'
-                        'тип відео, яке ви хочете переглянути', reply_markup=keyboard_for_example)
+    await message.reply('Увага!!! Відео в данний приктадах подані уривками\n'
+                        'Повні версії ви зможете глянути за посиланням', reply_markup=keyboard_for_example)
 
 
 @dp.callback_query_handler(text_contains='klip')
@@ -64,7 +63,7 @@ async def clip(call: types.CallbackQuery):
     await asyncio.sleep(1)
     await types.ChatActions.upload_video()
     media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/advert_Trim.mp4.mp4'))
+    media.attach_video(types.InputFile('example/video/KLIP.mp4'))
     await call.message.reply_media_group(media=media)
 
 
@@ -82,52 +81,34 @@ async def promotional_videos(call: types.CallbackQuery):
     await asyncio.sleep(1)
     await types.ChatActions.upload_video()
     media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/advert_Trim.mp4'))
+    media.attach_video(types.InputFile('example/video/Promo_1.mp4'))
     await call.message.reply_media_group(media=media)
 
 
 @dp.callback_query_handler(text_contains='wedding_videos')
-async def promotional_videos(call: types.CallbackQuery):
+async def wedding_videos(call: types.CallbackQuery):
     await asyncio.sleep(1)
     await types.ChatActions.upload_video()
     media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/advert_Trim.mp4'))
+    media.attach_video(types.InputFile('example/video/wedding.mp4'))
     await call.message.reply_media_group(media=media)
 
 
 @dp.callback_query_handler(text_contains='love_story')
-async def promotional_videos(call: types.CallbackQuery):
+async def love_story(call: types.CallbackQuery):
     await asyncio.sleep(1)
     await types.ChatActions.upload_video()
     media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/advert_Trim.mp4'))
-    await call.message.reply_media_group(media=media)
-
-
-@dp.callback_query_handler(text_contains='love_story')
-async def promotional_videos(call: types.CallbackQuery):
-    await asyncio.sleep(1)
-    await types.ChatActions.upload_video()
-    media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/advert_Trim.mp4'))
+    media.attach_video(types.InputFile('example/video/love_story.mp4'))
     await call.message.reply_media_group(media=media)
 
 
 @dp.callback_query_handler(text_contains='aerovideo')
-async def promotional_videos(call: types.CallbackQuery):
+async def aerovideo(call: types.CallbackQuery):
     await asyncio.sleep(1)
     await types.ChatActions.upload_video()
     media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/advert_Trim.mp4'))
-    await call.message.reply_media_group(media=media)
-
-
-@dp.callback_query_handler(text_contains='video_edition')
-async def promotional_videos(call: types.CallbackQuery):
-    await asyncio.sleep(1)
-    await types.ChatActions.upload_video()
-    media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/advert_Trim.mp4'))
+    media.attach_video(types.InputFile('example/video/aerovideo.mp4'))
     await call.message.reply_media_group(media=media)
 
 
