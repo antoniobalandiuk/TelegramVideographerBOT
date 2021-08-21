@@ -3,12 +3,11 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 """Стартове меню"""
 keyboard = InlineKeyboardMarkup()
-services = InlineKeyboardButton(text='Види послуг 📋', callback_data="services")
 price = InlineKeyboardButton(text='Прайс-лист 💵', callback_data="price")
 contacts = InlineKeyboardButton(text='Контактні дані 👥', callback_data="contacts")
 special_offers = InlineKeyboardButton(text='Особливі пропозиції 🤝', callback_data="special_offers")
 reviews = InlineKeyboardButton(text='Відгуки 🗣', callback_data="reviews")
-keyboard.add(services, price, contacts, special_offers, reviews)
+keyboard.add(price, contacts, special_offers, reviews)
 
 
 """Меню прикладів відео"""

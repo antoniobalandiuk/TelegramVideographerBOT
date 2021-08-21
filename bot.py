@@ -17,9 +17,12 @@ async def process_start_command(message: types.Message):
                         f'за найяскравішими кадрами у вашому житті', reply_markup=keyboard)
 
 
-@dp.callback_query_handler(text_contains='services')
-async def services(call: types.CallbackQuery):
-    await call.message.edit_text(f'Тут будуть види послуг', reply_markup=keyboard)
+# async def showreel(call: types.CallbackQuery):
+#     await asyncio.sleep(1)
+#     await types.ChatActions.upload_video()
+#     media = types.MediaGroup
+#     media.attach_video(types.InputFile('example/video/wedding.mp4'))
+#     await call.message.reply_media_group(media=media)
 
 
 @dp.callback_query_handler(text_contains='price')
@@ -44,18 +47,21 @@ async def contacts(call: types.CallbackQuery):
 async def special_offers(call: types.CallbackQuery):
     await call.message.edit_text(f'Будь ласка, перейдіть по посиланню - \n'
                                  f'та залишіть заяву для бартерного обміну послугами\n'
-                                 f'\n', reply_markup=keyboard)
+                                 f'https://forms.gle/Jv79qnfyQCXVECMi6\n', reply_markup=keyboard)
 
 
 @dp.callback_query_handler(text_contains='reviews')
 async def reviews(call: types.CallbackQuery):
-    await call.message.edit_text('Перейдіть по силці і залишіть коментар', reply_markup=keyboard)
+    await call.message.edit_text('Перейдіть по силці і залишіть коментар\n'
+                                 'https://forms.gle/GXw4s2jXozshadYk8', reply_markup=keyboard)
 
 
 @dp.message_handler(commands=['example'])
 async def message_before_example(message: types.Message):
     await message.reply('Увага!!! Відео в данний приктадах подані уривками\n'
-                        'Повні версії ви зможете глянути за посиланням', reply_markup=keyboard_for_example)
+                        'Повні версії ви зможете глянути за посиланням\n'
+                        'https://m.youtube.com/channel/UCBCrDx6CdQ0BYelhH99IkIg\n'
+                        'НАЖМІТЬ НА КНОПКУ І ЧЕКАЙТЕ ЗАВАНТАЖЕННЯ ВІДЕО6', reply_markup=keyboard_for_example)
 
 
 @dp.callback_query_handler(text_contains='klip')
@@ -108,7 +114,7 @@ async def aerovideo(call: types.CallbackQuery):
     await asyncio.sleep(1)
     await types.ChatActions.upload_video()
     media = types.MediaGroup()
-    media.attach_video(types.InputFile('example/video/aerovideo.mp4'))
+    media.attach_video(types.InputFile('example/video/story_drone.mp4'))
     await call.message.reply_media_group(media=media)
 
 
