@@ -58,7 +58,7 @@ async def reviews(call: types.CallbackQuery):
 
 @dp.message_handler(commands=['example'])
 async def message_before_example(message: types.Message):
-    await message.reply('Увага!!! Відео в данний приктадах подані уривками\n'
+    await message.reply('Увага!!! Відео в даних прикладах подані уривками\n'
                         'Повні версії ви зможете глянути за посиланням\n'
                         'https://m.youtube.com/channel/UCBCrDx6CdQ0BYelhH99IkIg\n'
                         'НАЖМІТЬ НА КНОПКУ І ЧЕКАЙТЕ ЗАВАНТАЖЕННЯ ВІДЕО6', reply_markup=keyboard_for_example)
